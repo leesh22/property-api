@@ -7,16 +7,29 @@ describe('GET /', () => {
   });
 });
 
-describe('GET /list', () => {
-  it('should render properly with valid parameters', async () => {
-    await request(app)
-      .get('/list')
-      .query({ title: 'List title' })
-      .expect(200);
+describe('GET /properties', () => {
+  //checking end point returns 200
+  it('should return 200', async () => {
+    await request(app).get('/properties').expect(200);
   });
 
-  it('should error without a valid parameter', async () => {
-    await request(app).get('/list').expect(500);
+  it('should call getProperties', async () => {
+    const getProperties = jest.fn();
+
+    await request(app)
+    .get('/properties')
+    
+    getProperties();
+    expect(getProperties).toHaveBeenCalled()
+  });
+
+  it('should return array', async () => {
+    await request(app)
+    .get('/properties')
+    .expect(200)
+    .then((data) => {
+      expect(Array.isArray(data.body)).toBe(true);
+    })
   });
 });
 

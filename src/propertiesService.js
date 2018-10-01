@@ -4,7 +4,7 @@ import {PROPERTIES} from './data';
 
 const googleAPIKey = "AIzaSyAGbxwfFN_wQCo3hBe9JUcTEoAcoN6UjWE";
 
- function checkDistance(pc) {
+ export function checkDistance(pc) {
   const postcode = pc.split(' ').join(''); /* removing spaces from postcode string */
   const radius = 20000;
 
